@@ -1,10 +1,11 @@
 package com.linktic.ms_inventory.inventory.infrastructure.rest.controller;
 
 import com.linktic.ms_inventory.inventory.application.dto.JsonApiResponse;
-import com.linktic.ms_inventory.inventory.application.dto.PurchaseRequest;
+import com.linktic.ms_inventory.inventory.application.dto.InventoryRequest;
 import com.linktic.ms_inventory.inventory.application.handler.InventoryHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -46,9 +47,20 @@ public class inventoryController {
     })
     @PatchMapping("/purchase")
     public ResponseEntity<JsonApiResponse> purchaseProduct(
-            @Valid @RequestBody PurchaseRequest request) {
+            @Valid @RequestBody InventoryRequest request) {
 
         return inventoryHandler.purchaseProduct(request);
+    }
 
+    @Operation(summary = "Crear un nuevo inventario", description = "Crea un inventario y devuelve el recurso ")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "inventario creado"),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos", content = @Content)
+    })
+    @PostMapping
+    public ResponseEntity<JsonApiResponse> createInventory(
+            @Valid @RequestBody InventoryRequest productRequest) {
+
+        return inventoryHandler.createInventory(productRequest);
     }
 }

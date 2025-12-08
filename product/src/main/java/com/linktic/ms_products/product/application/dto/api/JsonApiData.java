@@ -1,6 +1,5 @@
 package com.linktic.ms_products.product.application.dto.api;
 
-import com.linktic.ms_products.product.domain.model.ProductModel;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

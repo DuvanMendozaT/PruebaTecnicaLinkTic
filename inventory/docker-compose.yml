@@ -1,0 +1,33 @@
+
+services:
+  inventory-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: inventory-app
+    image: linktic-inventory-app:1.0.0
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@//oracle-db:1521/ORCLPDB1
+      SPRING_DATASOURCE_USERNAME: SYSTEM
+      SPRING_DATASOURCE_PASSWORD: oracle
+    depends_on:
+      - oracle-db
+    networks:
+      - backend-net
+
+  oracle-db:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: oracle-db
+    environment:
+      ORACLE_PASSWORD: oracle
+      ORACLE_DATABASE: ORCLPDB1
+    ports:
+      - "1522:1521"
+    networks:
+      - backend-net
+
+networks:
+  backend-net:
+    driver: bridge

@@ -4,6 +4,7 @@ public class Constants {
     public static final String SUCCESSFULLY_STATUS = "Operation completed successfully.";
     public static final String PRODUCT_NOT_FOUND = "Product does not exist.";
     public static final String PRODUCT_FOUND = "Product exist.";
+    public static final String HEADER_API_KEY = "X-API-KEY";
     public static final String PRODUCT_CREATION_FAILED = "The product could not be created.";
     public static final String INVALID_REQUEST_PARAMETERS = "Invalid request parameters.";
     public static final String UNEXPECTED_ERROR = "An unexpected error has occurred.";

@@ -24,9 +24,10 @@ public class ExternalProductApiAdapter implements ExternalProductApiPort {
     }
 
     @Override
-    public ProductModel getProductDetails(Long externalId) {
+    public ProductModel getProductDetails(Long externalId, String apiKey) {
         ProductResponse response = webClient.get()
                 .uri("/products/{id}", externalId)
+                .header(Constants.HEADER_API_KEY, apiKey)
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError, clientResponse ->
                         clientResponse.bodyToMono(String.class)

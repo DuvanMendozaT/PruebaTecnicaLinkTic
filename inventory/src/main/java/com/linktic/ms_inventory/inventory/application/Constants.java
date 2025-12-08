@@ -7,7 +7,9 @@ public class Constants {
     public static final String PRODUCT_CREATION_FAILED = "The product could not be created.";
     public static final String INVALID_REQUEST_PARAMETERS = "Invalid request parameters.";
     public static final String UNEXPECTED_ERROR = "An unexpected error has occurred.";
-    public static final String PRODUCT_CREATED_SUCCESSFULLY = "Product created successfully.";
+    public static final String HEADER_API_KEY = "X-API-KEY";
+
+    public static final String INVENTORY_CREATED_SUCCESSFULLY = "Inventory created successfully.";
     public static final String PRODUCT_UPDATED_SUCCESSFULLY = "Product updated successfully.";
     public static final String PRODUCT_UPDATE_FAILED = "Product could not be updated.";
     public static final String PRODUCT_DELETED_SUCCESSFULLY = "Product deleted successfully.";

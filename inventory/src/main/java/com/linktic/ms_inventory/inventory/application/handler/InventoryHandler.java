@@ -3,7 +3,7 @@ package com.linktic.ms_inventory.inventory.application.handler;
 import com.linktic.ms_inventory.inventory.application.Constants;
 import com.linktic.ms_inventory.inventory.application.dto.JsonApiData;
 import com.linktic.ms_inventory.inventory.application.dto.JsonApiResponse;
-import com.linktic.ms_inventory.inventory.application.dto.PurchaseRequest;
+import com.linktic.ms_inventory.inventory.application.dto.InventoryRequest;
 import com.linktic.ms_inventory.inventory.domain.model.InventoryModel;
 import com.linktic.ms_inventory.inventory.domain.model.ProductModel;
 import com.linktic.ms_inventory.inventory.domain.service.InventoryService;
@@ -31,7 +31,7 @@ public class InventoryHandler {
         return processResponse(Constants.SUCCESSFULLY_STATUS, inventoryModel.getQuantity(), productModel); //respuesta con info de producto
     }
 
-    public ResponseEntity<JsonApiResponse> purchaseProduct(PurchaseRequest request) {
+    public ResponseEntity<JsonApiResponse> purchaseProduct(InventoryRequest request) {
 
         InventoryModel inventoryModel = inventoryService.purchaseProduct(request);
 
@@ -56,5 +56,24 @@ public class InventoryHandler {
         return ResponseEntity.ok().body(response);
     }
 
+    public ResponseEntity<JsonApiResponse> processResponse(String status,String message, InventoryModel inventoryModel){
+        JsonApiData<Object> body = JsonApiData.builder()
+                .status(status)
+                .message(message)
+                .attributes(inventoryModel)
+                .build();
 
+        JsonApiResponse response = JsonApiResponse.builder()
+                .data(body)
+                .build();
+
+        return ResponseEntity.ok().body(response);
+    }
+
+
+    public ResponseEntity<JsonApiResponse> createInventory(InventoryRequest productRequest) {
+
+        InventoryModel inventoryModel = inventoryService.createInventory(productRequest);
+        return processResponse(Constants.SUCCESSFULLY_STATUS,Constants.INVENTORY_CREATED_SUCCESSFULLY, inventoryModel);
+    }
 }
