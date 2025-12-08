@@ -6,7 +6,6 @@ import com.linktic.ms_products.product.domain.exeption.ProductNotFoundException;
 import com.linktic.ms_products.product.domain.model.ProductModel;
 import com.linktic.ms_products.product.domain.repository.ProductRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

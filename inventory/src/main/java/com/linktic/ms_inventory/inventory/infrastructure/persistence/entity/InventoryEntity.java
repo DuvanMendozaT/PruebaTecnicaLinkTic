@@ -1,4 +1,4 @@
-package com.linktic.ms_inventory.inventory.infrastructure.adapter.oracledb;
+package com.linktic.ms_inventory.inventory.infrastructure.persistence.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
